@@ -7,6 +7,9 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
@@ -17,6 +20,11 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static android.graphics.Color.BLACK;
 import static android.graphics.Color.CYAN;
 import static android.graphics.Color.RED;
 import static android.graphics.Color.argb;
@@ -59,27 +67,39 @@ public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
     boolean threadRunning;
     private boolean mRun = true;
     private final Object mRunLock = new Object();
-
+    List<Integer> valores=new ArrayList<Integer>();
+    PieChart pie=new PieChart();
 
     class GraficoThread extends Thread {
-
+        Path path = new Path();
+        RectF f =new RectF(0,0,480,480);
+        Paint paint = new Paint(BLACK);
         public GraficoThread(SurfaceHolder surfaceHolder, Context context,
                            Handler handler) {
             // get handles to some important objects
             mSurfaceHolder = surfaceHolder;
             mHandler = handler;
             mContext = context;
-
+            valores.add(10);
+            valores.add(20);
+            valores.add(30);
             Resources res = context.getResources();
         }
         private void doDraw(Canvas canvas) {
             canvas.drawBitmap(mBackgroundImage, 0, 0, null);
-            canvas.drawColor(Color.BLUE);
+            canvas.drawColor(Color.WHITE);
+            Rect canvasRect = canvas.getClipBounds();
             // Draw the text.
+
+
+            pie.draw(canvas,valores);
+            //canvas.drawArc(f,0,180,true,paint);
             mTextPaint.setTextSize(mTextSize);
             mTextPaint.setColor(RED);
             canvas.drawText(mExampleString, 20,  mTextSize+mTextHeight,  mTextPaint);
             mTextHeight--;
+
+            //canvasRect.
             // Draw the example drawable on top of the text.
             if (mExampleDrawable != null) {
                 mExampleDrawable.setBounds(paddingLeft, paddingTop,
