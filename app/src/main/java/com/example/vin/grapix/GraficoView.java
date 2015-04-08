@@ -68,11 +68,10 @@ public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
     private boolean mRun = true;
     private final Object mRunLock = new Object();
     List<Integer> valores=new ArrayList<Integer>();
-    PieChart pie=new PieChart();
+    BlockChart pie=new BlockChart();
 
     class GraficoThread extends Thread {
         Path path = new Path();
-        RectF f =new RectF(0,0,480,480);
         Paint paint = new Paint(BLACK);
         public GraficoThread(SurfaceHolder surfaceHolder, Context context,
                            Handler handler) {
@@ -89,11 +88,10 @@ public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
             canvas.drawBitmap(mBackgroundImage, 0, 0, null);
             canvas.drawColor(Color.WHITE);
             Rect canvasRect = canvas.getClipBounds();
-            // Draw the text.
-
 
             pie.draw(canvas,valores);
-            //canvas.drawArc(f,0,180,true,paint);
+
+
             mTextPaint.setTextSize(mTextSize);
             mTextPaint.setColor(RED);
             canvas.drawText(mExampleString, 20,  mTextSize+mTextHeight,  mTextPaint);
