@@ -37,7 +37,7 @@ public class BlockChart extends Chart{
             //refer=canvas.getWidth()>canvas.getHeight()?canvas.getHeight():canvas.getWidth();
 
             Rect r =new Rect ((int)mark,(int)(canvas.getHeight()-(((canvas.getHeight())*valueList.get(count))/big)),(int)(mark+width),((canvas.getClipBounds()).bottom));
-            //Rect r =new Rect(0,0,100,100);
+            //Rect r =new Rect(L,T,R,B);
             canvas.drawRect(r,paint);
             mark+= (width);
 
