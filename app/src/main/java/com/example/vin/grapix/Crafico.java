@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 
 
 
-public class crafico extends ActionBarActivity {
+public class Crafico extends ActionBarActivity {
 
     Bitmap bg = Bitmap.createBitmap(480, 800, Bitmap.Config.ARGB_8888);
     Canvas canvas= new Canvas(bg);
