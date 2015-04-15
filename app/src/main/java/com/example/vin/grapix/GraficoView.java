@@ -35,14 +35,14 @@ import static android.graphics.Color.red;
  */
 public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
     private String mExampleString = "example"; // TODO: use a default from R.string...
-    private int mExampleColor = RED; // TODO: use a default from R.color...
+    private int mExampleColor = getExampleColor(); // TODO: use a default from R.color...
     private float mExampleDimension = 50; // TODO: use a default from R.dimen...
     private Drawable mExampleDrawable;
 
-    private TextPaint mTextPaint = new TextPaint(RED);
-    private float mTextWidth=200;
-    private float mTextHeight=200;
-    private float mTextSize=40;
+    //private TextPaint mTextPaint = new TextPaint(RED);
+    //private float mTextWidth=200;
+    //private float mTextHeight=200;
+    //private float mTextSize=40;
     private TextView mStatusText;
 
 
@@ -67,8 +67,9 @@ public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
     boolean threadRunning;
     private boolean mRun = true;
     private final Object mRunLock = new Object();
-    List<Integer> valores=new ArrayList<Integer>();
+    List<Double> valores=new ArrayList<>();
     Chart chart=new Chart();
+    boolean ready= false;
 
 
     class GraficoThread extends Thread {
@@ -81,21 +82,21 @@ public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
             mHandler = handler;
             mContext = context;
             Resources res = context.getResources();
-            valores.add(10);
-            valores.add(5);
-            valores.add(20);
-            valores.add(30);
-            valores.add(20);
-            valores.add(30);
-            valores.add(10);
+            valores.add(10d);
+            valores.add(5d);
+            valores.add(20d);
+            valores.add(30d);
+            valores.add(20d);
+            valores.add(30d);
+            valores.add(10d);
         }
         private void doDraw(Canvas canvas) {
             canvas.drawBitmap(mBackgroundImage, 0, 0, null);
-            canvas.drawColor(Color.WHITE);
+            canvas.drawColor(mExampleColor);
             //Rect canvasRect = canvas.getClipBounds();
-
-            chart.draw(canvas,valores);
-
+            if(ready) {
+                chart.draw(canvas, valores);
+            }
 
             //mTextPaint.setTextSize(mTextSize);
            // mTextPaint.setColor(RED);
@@ -209,32 +210,32 @@ public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
         a.recycle();
 
         // Set up a default TextPaint object
-        mTextPaint = new TextPaint();
-        mTextPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
-        mTextPaint.setTextAlign(Paint.Align.LEFT);
+        //mTextPaint = new TextPaint();
+        //mTextPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
+        //mTextPaint.setTextAlign(Paint.Align.LEFT);
 
         // Update TextPaint and text measurements from attributes
         invalidateTextPaintAndMeasurements();
     }
 
     private void invalidateTextPaintAndMeasurements() {
-        mTextPaint.setTextSize(mExampleDimension);
-        mTextPaint.setColor(mExampleColor);
-        mTextWidth = mTextPaint.measureText(mExampleString);
+        //mTextPaint.setTextSize(mExampleDimension);
+        //mTextPaint.setColor(mExampleColor);
+        //mTextWidth = mTextPaint.measureText(mExampleString);
 
-        Paint.FontMetrics fontMetrics = mTextPaint.getFontMetrics();
-        mTextHeight = fontMetrics.bottom;
+        //Paint.FontMetrics fontMetrics = mTextPaint.getFontMetrics();
+        //mTextHeight = fontMetrics.bottom;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.restore();
-        canvas.drawColor(Color.BLUE);
+        canvas.drawColor(mExampleColor);
         // Draw the text.
-        mTextPaint.setTextSize(mTextSize);
-        mTextPaint.setColor(RED);
-        canvas.drawText(mExampleString, 20,  30,  mTextPaint);
+        //mTextPaint.setTextSize(mTextSize);
+        //mTextPaint.setColor(RED);
+        //canvas.drawText(mExampleString, 20,  30,  mTextPaint);
 
         // Draw the example drawable on top of the text.
         if (mExampleDrawable != null) {
