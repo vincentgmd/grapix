@@ -68,7 +68,7 @@ public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
     private boolean mRun = true;
     private final Object mRunLock = new Object();
     List<Integer> valores=new ArrayList<Integer>();
-    BlockChart pie=new BlockChart();
+    Chart chart=new LineChart();
 
     class GraficoThread extends Thread {
         Path path = new Path();
@@ -80,8 +80,12 @@ public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
             mHandler = handler;
             mContext = context;
             valores.add(10);
+            valores.add(5);
             valores.add(20);
             valores.add(30);
+            valores.add(20);
+            valores.add(30);
+            valores.add(10);
             Resources res = context.getResources();
         }
         private void doDraw(Canvas canvas) {
@@ -89,7 +93,7 @@ public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
             canvas.drawColor(Color.WHITE);
             Rect canvasRect = canvas.getClipBounds();
 
-            pie.draw(canvas,valores);
+            chart.draw(canvas,valores);
 
 
             mTextPaint.setTextSize(mTextSize);

@@ -28,6 +28,7 @@ public class Chart {
         colorList.add(Color.MAGENTA);
         colorList.add(Color.GRAY);
         colorList.add(Color.WHITE);
+        paint.setColor(colorList.get(0));
     }
     void draw(Canvas canvas) {
 
@@ -39,6 +40,7 @@ public class Chart {
     void draw(Canvas canvas,List<Integer> ivalueList,List<Integer> icolorList){
         valueList=ivalueList;
         colorList=icolorList;
+        paint.setColor(colorList.get(0));
         draw( canvas);
     }
 

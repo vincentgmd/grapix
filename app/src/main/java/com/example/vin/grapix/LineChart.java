@@ -28,11 +28,12 @@ public class LineChart extends Chart{
             count++;
         }
         count=0;
-        mark=0;
-        width=canvas.getWidth()/valueList.size();
+
+        width=canvas.getWidth()/(valueList.size()-1);
+        mark = -width;
         pheight= valueList.get(0);
         while(count<valueList.size()){
-            paint.setColor(colorList.get(count%colorList.size()));
+            //paint.setColor(colorList.get(count%colorList.size()));
             //refer=canvas.getWidth()>canvas.getHeight()?canvas.getHeight():canvas.getWidth();
 
            // Rect r =new Rect ((int)mark,(int)(canvas.getHeight()-(((canvas.getHeight())*valueList.get(count))/big)),(int)(mark+width),((canvas.getClipBounds()).bottom));
