@@ -11,8 +11,6 @@ public class BlockChart extends Chart{
     int count;
     float sum;
     double mark;
-    int space;
-    int fafa;
     int big;
     double width;
 
