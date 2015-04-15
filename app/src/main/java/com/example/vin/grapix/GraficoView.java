@@ -68,7 +68,8 @@ public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
     private boolean mRun = true;
     private final Object mRunLock = new Object();
     List<Integer> valores=new ArrayList<Integer>();
-    Chart chart=new LineChart();
+    Chart chart=new Chart();
+
 
     class GraficoThread extends Thread {
         Path path = new Path();
@@ -79,6 +80,7 @@ public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
             mSurfaceHolder = surfaceHolder;
             mHandler = handler;
             mContext = context;
+            Resources res = context.getResources();
             valores.add(10);
             valores.add(5);
             valores.add(20);
@@ -86,23 +88,21 @@ public class GraficoView extends SurfaceView implements SurfaceHolder.Callback {
             valores.add(20);
             valores.add(30);
             valores.add(10);
-            Resources res = context.getResources();
         }
         private void doDraw(Canvas canvas) {
             canvas.drawBitmap(mBackgroundImage, 0, 0, null);
             canvas.drawColor(Color.WHITE);
-            Rect canvasRect = canvas.getClipBounds();
+            //Rect canvasRect = canvas.getClipBounds();
 
             chart.draw(canvas,valores);
 
 
-            mTextPaint.setTextSize(mTextSize);
-            mTextPaint.setColor(RED);
-            canvas.drawText(mExampleString, 20,  mTextSize+mTextHeight,  mTextPaint);
-            mTextHeight--;
+            //mTextPaint.setTextSize(mTextSize);
+           // mTextPaint.setColor(RED);
+            //canvas.drawText(mExampleString, 20,  mTextSize+mTextHeight,  mTextPaint);
+            // mTextHeight--;
 
-            //canvasRect.
-            // Draw the example drawable on top of the text.
+
             if (mExampleDrawable != null) {
                 mExampleDrawable.setBounds(paddingLeft, paddingTop,
                         paddingLeft + contentWidth, paddingTop + contentHeight);

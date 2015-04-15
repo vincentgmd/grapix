@@ -9,9 +9,9 @@ import android.graphics.RectF;
  */
 public class BlockChart extends Chart{
     int count;
-    float sum;
+    double sum;
     double mark;
-    int big;
+    double big;
     double width;
 
 

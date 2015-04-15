@@ -11,7 +11,7 @@ import java.util.List;
  * Created by vin on 4/7/2015.
  */
 public class Chart {
-    List<Integer> valueList=new ArrayList<>();
+    List<Double> valueList=new ArrayList<>();
     List<Integer> colorList=new ArrayList<>();
     Paint paint=new Paint();
 
@@ -33,11 +33,11 @@ public class Chart {
     void draw(Canvas canvas) {
 
     }
-    void draw(Canvas canvas,List<Integer> ivalueList){
+    void draw(Canvas canvas,List<Double> ivalueList){
             valueList=ivalueList;
             draw( canvas);
     }
-    void draw(Canvas canvas,List<Integer> ivalueList,List<Integer> icolorList){
+    void draw(Canvas canvas,List<Double> ivalueList,List<Integer> icolorList){
         valueList=ivalueList;
         colorList=icolorList;
         paint.setColor(colorList.get(0));

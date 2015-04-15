@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class PieChart extends Chart{
     int count;
-    float sum;
+    double sum;
     double mark;
-    int refer;
+    double refer;
 
     PieChart( ){
         super();
@@ -32,8 +32,8 @@ public class PieChart extends Chart{
         while(count<valueList.size()){
             paint.setColor(colorList.get(count%colorList.size()));
             refer=canvas.getWidth()>canvas.getHeight()?canvas.getHeight():canvas.getWidth();
-            RectF f =new RectF(0,0,refer,refer);
-            canvas.drawArc(f,(float) mark, ((valueList.get(count) * 360) / sum),true,paint);
+            RectF f =new RectF(0,0,(float)refer,(float)refer);
+            canvas.drawArc(f,(float) mark, (float)((valueList.get(count) * 360) / sum),true,paint);
             mark+= ((valueList.get(count) * 360) / sum);
 
 

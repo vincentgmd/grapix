@@ -6,10 +6,10 @@ import android.graphics.Rect;
 
 public class LineChart extends Chart{
     int count;
-    float sum;
+    double sum;
     double mark;
-    int pheight;
-    int big;
+    double pheight;
+    double big;
     double width;
 
 
@@ -38,7 +38,7 @@ public class LineChart extends Chart{
 
            // Rect r =new Rect ((int)mark,(int)(canvas.getHeight()-(((canvas.getHeight())*valueList.get(count))/big)),(int)(mark+width),((canvas.getClipBounds()).bottom));
             //Rect r =new Rect(0,0,100,100);
-            canvas.drawLine((float)mark,(float)(canvas.getHeight()-(((canvas.getHeight())*pheight)/big)),(float)(mark+width),(canvas.getHeight()-(((canvas.getHeight())*valueList.get(count))/big)),paint);
+            canvas.drawLine((float)mark,(float)(canvas.getHeight()-(((canvas.getHeight())*pheight)/big)),(float)(mark+width),(float)(canvas.getHeight()-(((canvas.getHeight())*valueList.get(count))/big)),paint);
             mark+= (width);
             pheight= valueList.get(count);
 
